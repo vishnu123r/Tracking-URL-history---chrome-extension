@@ -12,6 +12,7 @@ function sendCurrentUrl(url) {
     }
   });
   
+  //Send the url to database
   try{req.open('POST', 'http://localhost:1234/db1/insertdb.php', true);
       req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       req.send('url=' + encodeURIComponent(url));
@@ -20,6 +21,7 @@ function sendCurrentUrl(url) {
     }
 }
 
+//Reciecving the url from content files and saving it to database
 chrome.runtime.onMessage.addListener(function(url, sender, sendResponse) {
 	sendCurrentUrl(url);
 });
